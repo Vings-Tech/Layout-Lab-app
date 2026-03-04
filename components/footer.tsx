@@ -13,7 +13,7 @@ const Footer: React.FC = () => {
                             <div className="flex-shrink-0 transition-all duration-300 group-hover:scale-110">
                                 <img
                                     src="/icon.png"
-                                    alt="QRNest Logo"
+                                    alt="LAYOUTLAB Logo"
                                     className="h-10 w-auto object-contain transition-all duration-500"
                                 />
                             </div>

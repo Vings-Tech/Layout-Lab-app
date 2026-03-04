@@ -90,85 +90,87 @@ const App: React.FC = () => {
   if (!state.url) {
     return (
       <div className="min-h-screen flex flex-col bg-[#020617] text-slate-200 selection:bg-indigo-500/30 overflow-x-hidden overflow-y-auto">
-        <header className="p-8 flex justify-center items-center w-full">
-          <div className="flex flex-col items-center gap-2 group cursor-pointer" onClick={handleReset}>
-            <div className="w-12 h-12 bg-indigo-600 rounded-2xl flex items-center justify-center shadow-indigo-500/40 shadow-2xl group-hover:scale-110 transition-all duration-300 ring-2 ring-indigo-400/20">
-              <IconLaptop className="text-white w-7 h-7" />
-            </div>
-            <span className="font-black text-3xl tracking-tighter text-white">LAYOUT<span className="text-indigo-500">LAB</span></span>
-          </div>
-        </header>
-
-        <main className="flex-1 flex flex-col items-center justify-center px-6 -mt-12">
-          <div className="w-full max-w-4xl text-center space-y-12">
-            <div className="space-y-8">
-              <h1 className="text-7xl md:text-9xl font-black tracking-tighter text-white leading-[0.9] lg:-ml-2 animate-in fade-in slide-in-from-top-4 duration-1000">
-                Responsive <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-br from-indigo-400 via-violet-400 to-cyan-400">Perfected.</span>
-              </h1>
-              <div className="space-y-4 animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-200">
-                <p className="text-xl md:text-2xl text-slate-300 max-w-2xl mx-auto leading-relaxed font-medium italic opacity-90">
-                  "A Frontend Website that shows the Frontend Of Every Website"
-                </p>
-                <p className="text-[10px] font-black uppercase tracking-[0.4em] text-slate-600">
-                  — Frontend Developer
-                </p>
+        <div className="min-h-screen flex flex-col shrink-0">
+          <header className="p-8 flex justify-center items-center w-full">
+            <div className="flex flex-col items-center gap-2 group cursor-pointer" onClick={handleReset}>
+              <div className="w-12 h-12 bg-indigo-600 rounded-2xl flex items-center justify-center shadow-indigo-500/40 shadow-2xl group-hover:scale-110 transition-all duration-300 ring-2 ring-indigo-400/20">
+                <IconLaptop className="text-white w-7 h-7" />
               </div>
+              <span className="font-black text-3xl tracking-tighter text-white">LAYOUT<span className="text-indigo-500">LAB</span></span>
             </div>
+          </header>
 
-            <form
-              onSubmit={(e) => {
-                e.preventDefault();
-                const input = e.currentTarget.querySelector('input') as HTMLInputElement;
-                let val = input.value.trim();
-                if (val) {
-                  // Ensure protocol
-                  if (!/^https?:\/\//i.test(val)) {
-                    if (val.startsWith('localhost') || val.startsWith('127.0.0.1')) {
-                      val = 'http://' + val;
-                    } else {
-                      val = 'https://' + val;
-                    }
-                  }
-                  handleUrlSubmit(val);
-                }
-              }}
-              className="relative group max-w-xl mx-auto animate-in fade-in zoom-in-95 duration-1000 delay-300"
-            >
-              <div className="absolute -inset-1 bg-gradient-to-r from-indigo-500 via-violet-500 to-cyan-500 rounded-2xl blur-xl opacity-20 group-hover:opacity-40 transition duration-1000"></div>
-              <div className="relative flex p-2 bg-slate-900/90 backdrop-blur-xl border border-slate-800/50 rounded-2xl shadow-2xl">
-                <input
-                  type="text"
-                  placeholder="Paste URL (e.g. chatgpt.com or instagram.com)"
-                  className="w-full px-6 py-4 bg-transparent text-white focus:outline-none mono text-sm font-medium placeholder:text-slate-600"
-                  disabled={state.isChecking}
-                  autoFocus
-                />
-                <button
-                  type="submit"
-                  disabled={state.isChecking}
-                  className={`bg-indigo-600 hover:bg-indigo-500 text-white px-8 py-4 rounded-xl font-black text-xs uppercase tracking-widest flex items-center gap-3 transition-all transform hover:translate-x-1 shadow-xl shadow-indigo-500/20 active:scale-95 ${state.isChecking ? 'opacity-50 cursor-not-allowed' : ''}`}
-                >
-                  {state.isChecking ? 'Analyzing...' : 'Launch'} <IconArrowRight className="w-4 h-4" />
-                </button>
-              </div>
-            </form>
-
-            <div className="flex flex-wrap items-center justify-center gap-12 pt-16 border-t border-slate-900/50 animate-in fade-in duration-1000 delay-500">
-              {[
-                { label: 'Mobile', desc: 'iPhone 14' },
-                { label: 'Tablet', desc: 'Standard' },
-                { label: 'Laptop', desc: 'Standard' },
-                { label: 'Desktop', desc: 'Ultra-Wide' }
-              ].map((item, i) => (
-                <div key={i} className="text-left group cursor-default">
-                  <div className="text-white font-black text-xl mb-1 group-hover:text-indigo-400 transition-colors leading-none tracking-tighter">{item.label}</div>
-                  <div className="text-slate-600 text-[10px] font-bold uppercase tracking-widest">{item.desc}</div>
+          <main className="flex-1 flex flex-col items-center justify-center px-6 -mt-12">
+            <div className="w-full max-w-4xl text-center space-y-12">
+              <div className="space-y-8">
+                <h1 className="text-7xl md:text-9xl font-black tracking-tighter text-white leading-[0.9] lg:-ml-2 animate-in fade-in slide-in-from-top-4 duration-1000">
+                  Responsive <br />
+                  <span className="text-transparent bg-clip-text bg-gradient-to-br from-indigo-400 via-violet-400 to-cyan-400">Perfected.</span>
+                </h1>
+                <div className="space-y-4 animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-200">
+                  <p className="text-xl md:text-2xl text-slate-300 max-w-2xl mx-auto leading-relaxed font-medium italic opacity-90">
+                    "A Frontend Website that shows the Frontend Of Every Website"
+                  </p>
+                  <p className="text-[10px] font-black uppercase tracking-[0.4em] text-slate-600">
+                    — Frontend Developer
+                  </p>
                 </div>
-              ))}
+              </div>
+
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  const input = e.currentTarget.querySelector('input') as HTMLInputElement;
+                  let val = input.value.trim();
+                  if (val) {
+                    // Ensure protocol
+                    if (!/^https?:\/\//i.test(val)) {
+                      if (val.startsWith('localhost') || val.startsWith('127.0.0.1')) {
+                        val = 'http://' + val;
+                      } else {
+                        val = 'https://' + val;
+                      }
+                    }
+                    handleUrlSubmit(val);
+                  }
+                }}
+                className="relative group max-w-xl mx-auto animate-in fade-in zoom-in-95 duration-1000 delay-300"
+              >
+                <div className="absolute -inset-1 bg-gradient-to-r from-indigo-500 via-violet-500 to-cyan-500 rounded-2xl blur-xl opacity-20 group-hover:opacity-40 transition duration-1000"></div>
+                <div className="relative flex p-2 bg-slate-900/90 backdrop-blur-xl border border-slate-800/50 rounded-2xl shadow-2xl">
+                  <input
+                    type="text"
+                    placeholder="Paste URL (e.g. chatgpt.com or instagram.com)"
+                    className="w-full px-6 py-4 bg-transparent text-white focus:outline-none mono text-sm font-medium placeholder:text-slate-600"
+                    disabled={state.isChecking}
+                    autoFocus
+                  />
+                  <button
+                    type="submit"
+                    disabled={state.isChecking}
+                    className={`bg-indigo-600 hover:bg-indigo-500 text-white px-8 py-4 rounded-xl font-black text-xs uppercase tracking-widest flex items-center gap-3 transition-all transform hover:translate-x-1 shadow-xl shadow-indigo-500/20 active:scale-95 ${state.isChecking ? 'opacity-50 cursor-not-allowed' : ''}`}
+                  >
+                    {state.isChecking ? 'Analyzing...' : 'Launch'} <IconArrowRight className="w-4 h-4" />
+                  </button>
+                </div>
+              </form>
+
+              <div className="flex flex-wrap items-center justify-center gap-12 pt-16 border-t border-slate-900/50 animate-in fade-in duration-1000 delay-500">
+                {[
+                  { label: 'Mobile', desc: 'iPhone 14' },
+                  { label: 'Tablet', desc: 'Standard' },
+                  { label: 'Laptop', desc: 'Standard' },
+                  { label: 'Desktop', desc: 'Ultra-Wide' }
+                ].map((item, i) => (
+                  <div key={i} className="text-left group cursor-default">
+                    <div className="text-white font-black text-xl mb-1 group-hover:text-indigo-400 transition-colors leading-none tracking-tighter">{item.label}</div>
+                    <div className="text-slate-600 text-[10px] font-bold uppercase tracking-widest">{item.desc}</div>
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
-        </main>
+          </main>
+        </div>
 
         <Footer />
       </div>
