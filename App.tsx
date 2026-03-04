@@ -21,6 +21,10 @@ const App: React.FC = () => {
 
   const [refreshKey, setRefreshKey] = useState(0);
 
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [state.url]);
+
   const checkIframeCompatibility = async (url: string): Promise<PreviewMode> => {
     const lowerUrl = url.toLowerCase();
 
@@ -85,12 +89,13 @@ const App: React.FC = () => {
 
   const handleReset = useCallback(() => {
     setState(prev => ({ ...prev, url: '', previewMode: 'live' }));
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
 
   if (!state.url) {
     return (
-      <div className="min-h-screen flex flex-col bg-[#020617] text-slate-200 selection:bg-indigo-500/30 overflow-x-hidden overflow-y-auto">
-        <div className="min-h-screen flex flex-col shrink-0">
+      <div className="min-h-screen flex flex-col bg-[#020617] text-slate-200 selection:bg-indigo-500/30 overflow-x-hidden">
+        <div className="flex-1 flex flex-col">
           <header className="p-8 flex justify-center items-center w-full">
             <div className="flex flex-col items-center gap-2 group cursor-pointer" onClick={handleReset}>
               <div className="w-12 h-12 bg-indigo-600 rounded-2xl flex items-center justify-center shadow-indigo-500/40 shadow-2xl group-hover:scale-110 transition-all duration-300 ring-2 ring-indigo-400/20">
@@ -100,7 +105,7 @@ const App: React.FC = () => {
             </div>
           </header>
 
-          <main className="flex-1 flex flex-col items-center justify-center px-6 -mt-12">
+          <main className="flex-1 flex flex-col items-center justify-center px-6 py-12">
             <div className="w-full max-w-4xl text-center space-y-12">
               <div className="space-y-8">
                 <h1 className="text-7xl md:text-9xl font-black tracking-tighter text-white leading-[0.9] lg:-ml-2 animate-in fade-in slide-in-from-top-4 duration-1000">
